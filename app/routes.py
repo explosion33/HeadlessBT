@@ -19,4 +19,4 @@ def blueTooth():
 
     print(devices,d)
 
-    return render_template("bluetooth.html", devives=d)
+    return render_template("bluetooth.html", devices=d)
