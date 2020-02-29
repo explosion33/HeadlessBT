@@ -5,10 +5,16 @@
     </head>
 
     <body>
-        <h1 class="justify-content-center">Bluetooth</h1>
-        <a>devices</a>>
+        <div class="row">
+            <h1 class="cold-md-12 justify-content-center">Bluetooth</h1>
+        </div>
+
+        <a>Paired Devices:</a>
+        <br>
         {% for device in devices %}
-            <a>{{ device }}</a>
+            <div class = "row">
+                <a>{{ device }}</a>
+            </div>
         {% endfor %}
 
    </body>
