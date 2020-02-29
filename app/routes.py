@@ -13,8 +13,10 @@ def index():
 @app.route('/bt')
 def blueTooth():
     global devices
-    devics = bt.getDevices()
+    devices = bt.getDevices()
 
     d = list(devices.keys())
+
+    print(devices,d)
 
     return render_template("bluetooth.html", devives=d)
