@@ -110,36 +110,42 @@ def getConnected():
     '''
     out = repr(runCmd(cmd))
 
+    print(out)
+
     device = {}
 
     x = out.find("Name: ")
 
-    out = out[x+5::]
+    if x >= 0:
 
-    name = ""
-    for i in range(len(out)):
-        c1 = out[i]
-        c2 = out[i+1]
+        out = out[x+5::]
 
-        if c1 + c2 == "\\n":
-            break
-        name += c1
+        name = ""
+        for i in range(len(out)):
+            c1 = out[i]
+            c2 = out[i+1]
 
-    device["name"] = name
+            if c1 + c2 == "\\n":
+                break
+            name += c1
 
-    x = out.find("Icon: ")
-    out = out[x+5::]
+        device["name"] = name
 
-    icon = ""
-    for i in range(len(out)):
-        c1 = out[i]
-        c2 = out[i+1]
+    if x>=0:
 
-        if c1 + c2 == "\\n":
-            break
-        icon += c1
+        x = out.find("Icon: ")
+        out = out[x+5::]
 
-    device["type"] = icon
+        icon = ""
+        for i in range(len(out)):
+            c1 = out[i]
+            c2 = out[i+1]
+
+            if c1 + c2 == "\\n":
+                break
+            icon += c1
+
+        device["type"] = icon
     
     return device
 
