@@ -97,6 +97,52 @@ def remove(device):
 
     return out
 
+def getConnected():
+    """
+    getConnected() : gets teh currently connected device\n
+    returns : {name: "name", "MAC": "MAC", "Type": "type"}
+    """
+
+    cmd = '''bluetoothctl <<EOF
+    info
+    exit
+    EOF
+    '''
+    out = repr(runCmd(cmd))
+
+    device = {}
+
+    x = out.find("Name: ")
+
+    out = out[x+5::]
+
+    name = ""
+    for i in range(len(out)):
+        c1 = out[i]
+        c2 = out[i+1]
+
+        if c1 + c2 == "\\n":
+            break
+        name += c1
+
+    device["name"] = name
+
+    x = out.find("Icon: ")
+    out = out[x+5::]
+
+    icon = ""
+    for i in range(len(out)):
+        c1 = out[i]
+        c2 = out[i+1]
+
+        if c1 + c2 == "\\n":
+            break
+        icon += c1
+
+    device["type"] = icon
+    
+    return device
+
 if "main" in __name__: #if bt is called directly it runs a sctipt to handle incoming pairing requests
     devices = getDevices()
     print(devices)
