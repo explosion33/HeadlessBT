@@ -2,20 +2,48 @@
     <head>
         <title>Overview</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/extra.css') }}">
+
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
     <body>
-        <div class="row">
-            <h1 class="cold-md-12 justify-content-center">Bluetooth</h1>
-        </div>
+        <div class ="container mt-3">
+            <h1>Bluetooth</h1>
+            <div class="row">
+                <div class="col-6">
+                    <b>Devices</b>
+                    <br>
+                        {% for device in devices %}
+                            <div class="row pl-2 pb-1">
+                                <div class="col-9">
+                                    <a>{{device}}</a>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-danger btn-sm"><b>X</b></button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
 
-        <a>Paired Devices:</a>
-        <br>
-        {% for device in devices %}
-            <div class = "row">
-                <a>{{ device }}</a>
+                <div class="col-6">
+                    <b>Connected Device</b>
+                    <br>
+                        {% for key, value in connected.items()%}
+                            <div class="row pl-2">
+                                <div class="col-4">
+                                    <b>{{key}}</b>
+                                </div>
+                                <div class="col-4">
+                                    <a>{{value}}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+
             </div>
-        {% endfor %}
+        </div>
 
    </body>
 
