@@ -149,6 +149,20 @@ def getConnected():
     
     return device
 
+def disconnect():
+    """
+    disconnect() : disconnects the current device if their is one\n
+    returns : output from the console
+    """
+    cmd = '''bluetoothctl <<EOF
+    disconnect
+    exit
+    EOF
+    '''
+    out = repr(runCmd(cmd))
+
+    return out
+
 if "main" in __name__: #if bt is called directly it runs a sctipt to handle incoming pairing requests
     devices = getDevices()
     print(devices)
