@@ -118,7 +118,7 @@ def getConnected():
 
     if x >= 0:
 
-        out = out[x+5::]
+        out = out[x+6::]
 
         name = ""
         for i in range(len(out)):
@@ -129,12 +129,12 @@ def getConnected():
                 break
             name += c1
 
-        device["name"] = name
+        device["Name"] = name
 
     if x>=0:
 
         x = out.find("Icon: ")
-        out = out[x+5::]
+        out = out[x+6::]
 
         icon = ""
         for i in range(len(out)):
@@ -145,7 +145,7 @@ def getConnected():
                 break
             icon += c1
 
-        device["type"] = icon
+        device["Type"] = icon
     
     return device
 
