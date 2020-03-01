@@ -30,4 +30,4 @@ def remove(device):
     MAC = devices[device]
     bt.remove(MAC)
 
-    return redirect(url_for("bt"))
+    return redirect(url_for("bluetooth"))
