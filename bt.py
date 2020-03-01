@@ -78,10 +78,10 @@ def pair(device):
     out = repr(runCmd(cmd))
     return out
 
-def remove(device):
+def remove(MAC):
     """
     remove(device) : removes a device from the paired bluetooth devices\n
-    device : a string containing the mac address of the device\n
+    MAC : a string containing the mac address of the device\n
     returns : console log during command
     """
     cmd1 = '''bluetoothctl <<EOF
@@ -92,7 +92,7 @@ def remove(device):
     EOF
     '''
 
-    cmd = cmd1 + str(device) + cmd2
+    cmd = cmd1 + str(MAC) + cmd2
     out = repr(runCmd(cmd))
 
     return out
