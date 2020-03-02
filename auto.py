@@ -8,3 +8,4 @@ while time.time() - start < 15:
         bt.connect(devices[device])
     if bt.getConnected():
         break
+bt.advertise()
