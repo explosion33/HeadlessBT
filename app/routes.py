@@ -44,10 +44,14 @@ def bluetooth(on):
     d = list(devices.keys())
 
     if on == "1":
+        bt.advertise()
         process = subprocess.Popen(["python3","bt.py"])
     if on == "0":
         if process:
             process.kill()
+        
+        bt.advertise(False)
+
         try:
             os.remove("app/static/stopPairing.txt")
         except:
@@ -68,10 +72,5 @@ def remove(device):
 @app.route('/disconnect')
 def disconnect():
     bt.disconnect()
-    time.sleep(0.5)
     return redirect(url_for("bluetooth"))
-
-
-def pairManager():
-    print("pairing")
 
