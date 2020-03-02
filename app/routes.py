@@ -4,7 +4,7 @@ import os
 import bt
 import subprocess
 
-#devices = bt.getDevices()
+devices = bt.getDevices()
 process = None
 
 @app.after_request
@@ -30,10 +30,10 @@ def bluetooth(on):
     global devices
     global process
 
-    #devices = bt.getDevices()
-    devices = {'EthanPhone': 'F0:A3:5A:7B:A4:19', "Bill's IIIIphone": 'F0:A3:5A:7B:A4:19'} #fake data for Windows testing
-    #c = bt.getConnected()
-    c =  {'Name': 'EthanPhone', 'Type': 'phone'}
+    devices = bt.getDevices()
+    #devices = {'EthanPhone': 'F0:A3:5A:7B:A4:19', "Bill's IIIIphone": 'F0:A3:5A:7B:A4:19'} #fake data for Windows testing
+    c = bt.getConnected()
+    #c =  {'Name': 'EthanPhone', 'Type': 'phone'}
 
     d = list(devices.keys())
 
