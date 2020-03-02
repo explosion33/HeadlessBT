@@ -163,7 +163,7 @@ def disconnect():
 
     return out
 
-def advertise(on=True){
+def advertise(on=True):
     """
     def advertise(on=True) : turns advertising for bluetooth on and off\n
     on : weather or not to enable or disable
@@ -176,7 +176,6 @@ def advertise(on=True){
         cmd += "noscan"
 
     runCmd(cmd)
-}
 
 if "main" in __name__: #if bt is called directly it runs a sctipt to handle incoming pairing requests
     devices = getDevices()
