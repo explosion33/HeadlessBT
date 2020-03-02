@@ -50,20 +50,14 @@
                     pairBtn.alt = "1"
                     pairBtn.src="/static/images/pair1.png";
                 }
+
+                if (pairBtn.alt !== "0"){
+                    if (UrlExists("/static/stopPairing.txt")) {
+                        window.location.href = "/bt"
+                    }
+                }
             }
             
-            function readFile(){
-                var reader = new FileReader();
-
-                reader.addEventListener('load', function(e) {
-                    var text = e.target.result;
-                    console.log(text);
-                });
-
-                reader.readAsText(file);
-
-            }
-
             function UrlExists(url) {
                 var http = new XMLHttpRequest();
                 http.open('HEAD', url, false);
