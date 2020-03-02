@@ -3,11 +3,9 @@ from app import app
 import os
 import bt
 import subprocess
-import sched, time
 
 devices = bt.getDevices()
 process = None
-s = sched.scheduler(time.time, time.sleep)
 
 def checkProcess(process):
     x = process.poll()
@@ -48,8 +46,6 @@ def bluetooth(on):
 
     if on == "1":
         process = subprocess.Popen(["python3","bt.py"])
-        s.enter(1, 1, checkProcess, (process,))
-        s.run()
     if on == "0":
         if process:
             process.kill()
