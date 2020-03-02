@@ -51,6 +51,25 @@
                     pairBtn.src="/static/images/pair1.png";
                 }
             }
+            
+            function readFile(){
+                var reader = new FileReader();
+
+                reader.addEventListener('load', function(e) {
+                    var text = e.target.result;
+                    console.log(text);
+                });
+
+                reader.readAsText(file);
+
+            }
+
+            function UrlExists(url) {
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                return http.status!=404;
+            }
 
         </script>
 
