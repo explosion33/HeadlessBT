@@ -149,6 +149,23 @@ def getConnected():
     
     return device
 
+def connect(MAC):
+    """
+    connect(MAC) : tries to connect to all devices\n
+    returns : output from the console
+    """
+    cmd1 = '''bluetoothctl <<EOF
+    conenct '''
+
+    cmd2 = '''
+    exit
+    EOF
+    '''
+
+    cmd = cmd1 + str(MAC) + cmd2
+    out = repr(runCmd(cmd))
+    return out
+
 def disconnect():
     """
     disconnect() : disconnects the current device if their is one\n
