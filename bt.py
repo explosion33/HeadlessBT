@@ -110,8 +110,6 @@ def getConnected():
     '''
     out = repr(runCmd(cmd))
 
-    print(out)
-
     device = {}
 
     x = out.find("Name: ")
@@ -196,17 +194,14 @@ def advertise(on=True):
 
 if "main" in __name__: #if bt is called directly it runs a sctipt to handle incoming pairing requests
     devices = getDevices()
-    print(devices)
+    print("starting pair")
     while True:
         x = getNewDevices(devices)
         if x:
-            print(x)
             k = list(x.keys())
             out = pair(x[k[0]])
-            print(out)
             break
-        else:
-            print(x, devices)
+    print("paired")
     f = open("app/static/stopPairing.txt", "w+")
     f.close()
 
