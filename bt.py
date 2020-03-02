@@ -155,7 +155,7 @@ def connect(MAC):
     returns : output from the console
     """
     cmd1 = '''bluetoothctl <<EOF
-    conenct '''
+    connect '''
 
     cmd2 = '''
     exit
