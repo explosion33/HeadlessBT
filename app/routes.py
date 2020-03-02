@@ -14,7 +14,7 @@ def checkProcess(process):
     if x != None:
         print("process ended")
     else:
-        s.enter(1, 1, checkProcess)
+        s.enter(1, 1, checkProcess, (process,))
 
 @app.after_request
 def add_header(r):
@@ -48,7 +48,7 @@ def bluetooth(on):
 
     if on == "1":
         process = subprocess.Popen(["python3","bt.py"])
-        s.enter(1, 1, checkProcess)
+        s.enter(1, 1, checkProcess, (process,))
         s.run()
     if on == "0":
         if process:
