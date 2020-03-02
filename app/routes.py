@@ -4,7 +4,6 @@ import os
 import bt
 import subprocess
 
-devices = bt.getDevices()
 process = None
 
 def checkProcess(process):
@@ -34,7 +33,6 @@ def index():
 @app.route("/bt", defaults={"on": "0"})
 @app.route('/bt<on>')
 def bluetooth(on):
-    global devices
     global process
 
     devices = bt.getDevices()
@@ -49,6 +47,10 @@ def bluetooth(on):
     if on == "0":
         if process:
             process.kill()
+        try:
+            os.remove("app/static/stopPairing.txt")
+        except:
+            pass
 
     return render_template("bluetooth.html", devices=d, connected=c, on=on)
 @app.route('/remove/<device>')

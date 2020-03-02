@@ -176,3 +176,6 @@ if "main" in __name__: #if bt is called directly it runs a sctipt to handle inco
             break
         else:
             print(x, devices)
+    f = open("app/static/stopPairing.txt", "w+")
+    f.close()
+
