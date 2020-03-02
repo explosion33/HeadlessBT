@@ -2,25 +2,48 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app
 import os
 import bt
+import subprocess
 
-devices = bt.getDevices()
+#devices = bt.getDevices()
+process = None
+
+@app.after_request
+def add_header(r):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    r.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    r.headers["Pragma"] = "no-cache"
+    r.headers["Expires"] = "0"
+    r.headers['Cache-Control'] = 'public, max-age=0'
+    return r
 
 #main page plus random key handles transfers
 @app.route('/')
 def index():
     return render_template("home.html")
 
-@app.route('/bt')
-def bluetooth():
+@app.route("/bt", defaults={"on": "0"})
+@app.route('/bt<on>')
+def bluetooth(on):
     global devices
-    devices = bt.getDevices()
-    #devices = {'EthanPhone': 'F0:A3:5A:7B:A4:19', "Bill's IIIIphone": 'F0:A3:5A:7B:A4:19'} #fake data for Windows testing
-    c = bt.getConnected()
-    #c =  {'Name': 'EthanPhone', 'Type': 'phone'}
+    global process
+
+    #devices = bt.getDevices()
+    devices = {'EthanPhone': 'F0:A3:5A:7B:A4:19', "Bill's IIIIphone": 'F0:A3:5A:7B:A4:19'} #fake data for Windows testing
+    #c = bt.getConnected()
+    c =  {'Name': 'EthanPhone', 'Type': 'phone'}
 
     d = list(devices.keys())
 
-    return render_template("bluetooth.html", devices=d, connected=c)
+    if on == "1":
+        process = subprocess.Popen(["python3","bt.py"])
+    if on == "0":
+        if process:
+            process.kill()
+
+    return render_template("bluetooth.html", devices=d, connected=c, on=on)
 @app.route('/remove/<device>')
 def remove(device):
     global devices
@@ -31,3 +54,13 @@ def remove(device):
     bt.remove(MAC)
 
     return redirect(url_for("bluetooth"))
+
+@app.route('/disconnect')
+def disconnect():
+    bt.disconnect()
+    return redirect(url_for("bluetooth"))
+
+
+def pairManager():
+    print("pairing")
+
