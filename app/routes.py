@@ -55,7 +55,7 @@ def bluetooth(on):
     return render_template("bluetooth.html", devices=d, connected=c, on=on)
 @app.route('/remove/<device>')
 def remove(device):
-    global devices
+    devices = bt.getDevices()
 
     print("removing", device)
 
