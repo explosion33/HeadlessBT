@@ -3,6 +3,7 @@ from app import app
 import os
 import bt
 import subprocess
+import time
 
 process = None
 
@@ -28,7 +29,7 @@ def add_header(r):
 #main page plus random key handles transfers
 @app.route('/')
 def index():
-    return render_template("home.html")
+    return redirect(url_for("bluetooth"))
 
 @app.route("/bt", defaults={"on": "0"})
 @app.route('/bt<on>')
@@ -67,6 +68,7 @@ def remove(device):
 @app.route('/disconnect')
 def disconnect():
     bt.disconnect()
+    time.sleep(0.5)
     return redirect(url_for("bluetooth"))
 
 
