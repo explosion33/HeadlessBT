@@ -44,13 +44,13 @@ def bluetooth(on):
     d = list(devices.keys())
 
     if on == "1":
-        process = subprocess.Popen(["python3","/home/pi/flask/bt.py"])
+        process = subprocess.Popen(["python3",app.config["ROOT"] + "bt.py"])
     if on == "0":
         if process:
             process.kill()
 
         try:
-            os.remove("app/static/stopPairing.txt")
+            os.remove(app.config["ROOT"] + "app/static/stopPairing.txt")
         except:
             pass
 
