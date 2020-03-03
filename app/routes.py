@@ -44,7 +44,7 @@ def bluetooth(on):
     d = list(devices.keys())
 
     if on == "1":
-        process = subprocess.Popen(["python3",app.config["ROOT"] + "bt.py"])
+        process = subprocess.Popen(["python3",app.config["ROOT"] + "bt.py", app.config["ROOT"]])
     if on == "0":
         if process:
             process.kill()
