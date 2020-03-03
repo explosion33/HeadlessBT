@@ -183,3 +183,9 @@ esac
  
 exit 0
 ```
+
+save the file
+
+run ```sudo chmod 755 /etc/init.d/startFlask``` to give it permissions
+
+run ```sudo update-rc.d startFlask defaults``` to add it to startup
