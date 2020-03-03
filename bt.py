@@ -1,4 +1,4 @@
-import subprocess
+import subprocess, sys
 
 def runCmd(cmd):
     """
@@ -193,6 +193,12 @@ def advertise(on=True):
     runCmd(cmd)
 
 if "main" in __name__: #if bt is called directly it runs a sctipt to handle incoming pairing requests
+
+    args = list(sys.argv)[1:]
+
+    if args:
+        root = args[0]
+
     devices = getDevices()
     print("starting pair")
     while True:
@@ -202,6 +208,6 @@ if "main" in __name__: #if bt is called directly it runs a sctipt to handle inco
             out = pair(x[k[0]])
             break
     print("paired")
-    f = open("app/static/stopPairing.txt", "w+")
+    f = open(root + "app/static/stopPairing.txt", "w+")
     f.close()
 
