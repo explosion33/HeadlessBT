@@ -4,6 +4,8 @@ a headless bluetooth audio and gpio manager for RPI
 ## Setup
 turn on RaspberryPi and run through main setup
 
+install ```playsound```, ```pip3 install playsound```
+
 next setup audio streaming
 
 ## Audio Setup
