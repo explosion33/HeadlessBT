@@ -4,6 +4,9 @@ a headless bluetooth audio and gpio manager for RPI
 ## Setup
 turn on RaspberryPi and run through main setup
 
+Right click on the top menu bar and click ```Add / Remove Panel Items```
+then scroll down to bluetooth and select remove
+
 next setup audio streaming
 
 ## Audio Setup
@@ -36,9 +39,6 @@ bluetoothctl
 system-alias <Alias Here>
 exit
 ```
-
-Right click on the top menu bar and click ```Add / Remove Panel Items```
-then scroll down to bluetooth and select remove
 
 check to see if the bluetooth is working buy running
 
