@@ -4,7 +4,8 @@ a headless bluetooth audio and gpio manager for RPI
 ## Setup
 turn on RaspberryPi and run through main setup
 
-install ```playsound```, ```pip3 install playsound```
+Right click on the top menu bar and click ```Add / Remove Panel Items```
+then scroll down to bluetooth and select remove
 
 next setup audio streaming
 
@@ -38,9 +39,6 @@ bluetoothctl
 system-alias <Alias Here>
 exit
 ```
-
-Right click on the top menu bar and click ```Add / Remove Panel Items```
-then scroll down to bluetooth and select remove
 
 check to see if the bluetooth is working buy running
 
@@ -165,6 +163,15 @@ enter the following into the file
 ```
 #! /bin/sh
 # /etc/init.d/startFlask
+### BEGIN INIT INFO
+# Provides:          main.py
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start daemon at boot time
+# Description:       Enable service provided by daemon.
+### END INIT INFO
  
 case "$1" in
   start)
