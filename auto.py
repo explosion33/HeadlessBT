@@ -3,13 +3,15 @@ import time
 import sys
 import pygame as pg
 
+time.sleep(7)
+
+
 pg.init()
 pg.mixer.init()
 
 def play(file):
     pg.mixer.music.load(file)
     pg.mixer.music.play()
-    pg.event.wait()
 
 
 root = sys.argv[1]
@@ -28,5 +30,5 @@ while True:
             break
     bt.advertise()
     start = time.time()
-    while not bt.getConnected():
+    while bt.getConnected():
         print("waiting")
