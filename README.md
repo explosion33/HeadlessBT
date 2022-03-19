@@ -1,6 +1,16 @@
 # HeadlessBT
 a headless bluetooth audio and gpio manager for RPI
 
+## UPDATE
+on newer versions of raspbian (raspbian desktop) a screen reader prompt will play continiously
+
+kill the process with ```sudo -eaf | grep wiz```
+and kill the process with name ```piwiz```, ```kill <pid>```
+
+then remove the file with
+```sudo rm /etc/xdg/autostart/piwiz.desktop```
+
+
 ## Setup
 turn on RaspberryPi and run through main setup
 
